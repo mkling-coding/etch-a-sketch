@@ -47,3 +47,63 @@ h1 {
 #color:hover {
     cursor: pointer;
 }
+
+.eraserDiv, .clearDiv {
+    display: flex;
+    align-items: center;
+}
+
+.eraserDiv button, .clearDiv button {
+    padding: 10px 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.eraserDiv button:hover, .clearDiv button:hover {
+    cursor: pointer;
+    padding: 12px 24px;
+    background-color: green;
+    color: white;
+}
+
+.eraserDiv button:active, .clearDiv button:active {
+    padding: 10px 20px;
+}
+
+.clearDiv button {
+    background-color: white;
+}
+
+/* Active class is toggled on and off with JS */
+
+.active {
+    background-color: green;
+    color: white;
+}
+
+.inactive {
+    background-color: white;
+    color: black;
+}
+
+@media only screen and (max-width: 515px) {
+    .container {
+        width: 300px;
+        height: 300px;
+    }
+
+    #changeFeatures {
+        width: 300px;
+        justify-content: space-between;
+    }
+
+    .sliderDiv, .colorDiv {
+        width: 50%;
+        padding-bottom: 20px;
+    }
+
+    #color {
+        width: 40px;
+        height: 40px;
+    }
+}

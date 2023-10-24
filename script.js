@@ -3,15 +3,11 @@ const slider = document.querySelector(".slider");
 const sliderOutput = document.querySelector("#sliderOutput");
 const color = document.querySelector("#color")
 const p = document.querySelector("p")
-
-// Sets default color on page load
-const startup = () => {
-    color.value = "#000002";
-}
+const eraser = document.querySelector("#eraser")
+const clear = document.querySelector("#clear")
+let eraserOn = false;
 
 color.value = "#000002";
-
-// window.addEventListener("load", startup)
 
 // Sets default grid template
 container.style.gridTemplate = "repeat(4, 1fr) / repeat(4, 1fr)";
@@ -23,12 +19,18 @@ for (let j = 0; j < (slider.value * slider.value); j++) {
     container.appendChild(box);
     // Changes color of box whenever box is clicked
     box.addEventListener("click", function(e) {
-        e.target.style.backgroundColor = color.value;
+        if (eraserOn === false) {
+            e.target.style.backgroundColor = color.value;
+        } else {
+            e.target.style.backgroundColor = "#ffffff";
+        }
     });
     // Changes color of box whenever mouse button is hovering over the box and mouse button is also held down
     box.addEventListener("mouseover", function(e) {
-        if (e.buttons === 1) {
+        if (e.buttons === 1 && eraserOn === false) {
             e.target.style.backgroundColor = color.value;
+        } else if (e.buttons === 1 && eraserOn === true) {
+            e.target.style.backgroundColor = "#ffffff";
         }
     });
 };
@@ -47,13 +49,37 @@ slider.oninput = function() {
         container.appendChild(box);
         // Changes color of box whenever box is clicked
         box.addEventListener("click", function(e) {
-            e.target.style.backgroundColor = color.value;
+            if (eraserOn === false) {
+                e.target.style.backgroundColor = color.value;
+            } else {
+                e.target.style.backgroundColor = "#ffffff";
+            }
         });
         // Changes color of box whenever mouse button is hovering over the box and mouse button is also held down
         box.addEventListener("mouseover", function(e) {
-            if (e.buttons === 1) {
+            if (e.buttons === 1 && eraserOn === false) {
                 e.target.style.backgroundColor = color.value;
+            } else if (e.buttons === 1 && eraserOn === true) {
+                e.target.style.backgroundColor = "#ffffff";
             }
         });
     };
 }
+
+// Toggle eraser
+eraser.addEventListener("click", function(e) {
+    if (eraser.classList.contains("active")) {
+        eraser.classList.add("inactive")
+        eraser.classList.remove("active")
+        eraserOn = false;
+    } else {
+        eraser.classList.add("active")
+        eraser.classList.remove("inactive")
+        eraserOn = true;
+    }
+})
+
+// Clears canvas when button is clicked
+clear.addEventListener("click", function(e) {
+    document.querySelectorAll(".box").forEach((boxDiv) => boxDiv.style.backgroundColor = "#ffffff");
+});
