@@ -12,8 +12,8 @@ h1 {
 .container {
     margin: 0 auto;
     display: grid;
-    width: 550px;
-    height: 550px;
+    width: 500px;
+    height: 500px;
     /* grid-template: repeat(4, 1fr) / repeat(4, 1fr); */
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
