@@ -1,6 +1,17 @@
 const container = document.querySelector(".container");
 const slider = document.querySelector(".slider");
 const sliderOutput = document.querySelector("#sliderOutput");
+const color = document.querySelector("#color")
+const p = document.querySelector("p")
+
+// Sets default color on page load
+const startup = () => {
+    color.value = "#000002";
+}
+
+color.value = "#000002";
+
+// window.addEventListener("load", startup)
 
 // Sets default grid template
 container.style.gridTemplate = "repeat(4, 1fr) / repeat(4, 1fr)";
@@ -12,12 +23,12 @@ for (let j = 0; j < (slider.value * slider.value); j++) {
     container.appendChild(box);
     // Changes color of box whenever box is clicked
     box.addEventListener("click", function(e) {
-        e.target.style.backgroundColor = "black";
+        e.target.style.backgroundColor = color.value;
     });
     // Changes color of box whenever mouse button is hovering over the box and mouse button is also held down
     box.addEventListener("mouseover", function(e) {
         if (e.buttons === 1) {
-            e.target.style.backgroundColor = "black";
+            e.target.style.backgroundColor = color.value;
         }
     });
 };
@@ -36,12 +47,12 @@ slider.oninput = function() {
         container.appendChild(box);
         // Changes color of box whenever box is clicked
         box.addEventListener("click", function(e) {
-            e.target.style.backgroundColor = "black";
+            e.target.style.backgroundColor = color.value;
         });
         // Changes color of box whenever mouse button is hovering over the box and mouse button is also held down
         box.addEventListener("mouseover", function(e) {
             if (e.buttons === 1) {
-                e.target.style.backgroundColor = "black";
+                e.target.style.backgroundColor = color.value;
             }
         });
     };
